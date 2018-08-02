@@ -1,0 +1,47 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10
+      - image: mysql:5.7
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD: true
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+      # start database client up
+      - run: sudo apt install mysql-client
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+        
+      # load database
+      - run: mysql -h 127.0.0.1 -u root < ./db/schema.sql
+
+      # start server
+      - run: 
+          command: node ./server/index.js
+          background: true
+
+      # run tests!
+      - run: yarn test
+
+

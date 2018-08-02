@@ -1,0 +1,57 @@
+{
+  "name": "descriptions",
+  "version": "1.0.0",
+  "description": "merchant and deal information",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GroupOut/descriptions.git"
+  },
+  "author": "Jens Leerssen",
+  "license": "ISC",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "main": "bundle.js",
+  "scripts": {
+    "build": "webpack -d --watch",
+    "format": "prettier --write '**/*.{js,jsx}'",
+    "lint": "eslint '**/*.{js,jsx}' --quiet",
+    "start": "nodemon server/index.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "jsdom": "^11.11.0",
+    "mysql": "^2.16.0",
+    "mysql-client": "^0.3.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "styled-components": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.4.1",
+    "jest-enzyme": "^6.0.2",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0"
+  }
+}

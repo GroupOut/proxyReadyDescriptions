@@ -26,6 +26,8 @@ After installation below:
 
   [ ] Move `images` file found here: `./public/images/`
       into the inside of the proxy server repo's `public` file.
+  [ ] To engage google API a key will need to be supplied and the `googlemap.example.js` file renamed to `googlemap.js`
+  [ ] Key can be obtained from here: <https://cloud.google.com/maps-platform/#get-started>
 
 - Node 6.13.0
 - 

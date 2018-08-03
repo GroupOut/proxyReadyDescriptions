@@ -6,14 +6,15 @@ import $ from 'jquery';
 
 const DescriptionWrapper = styled.div`
   float: left;
-  width: 620px;
+  /* width: 620px; */
+  margin-left: 12%
+  max-width: 85%;
   height: 50%;
-  border-style: solid;
-  border-width: 2px;
+/*   border-style: solid;
+  border-width: 2px; */  
   text-align: left;
-  padding: 10px;
   color: #75787b;
-  font-family: OpenSans,Helvetica Neue,Helvetica,Tahoma,Arial,FreeSans,sans-serif;
+  font-family: OpenSans, "Helvetica Neue" , Helvetica, Tahoma, Arial, FreeSans, sans-serif;
   font-size: 14px;
   font-eight: 400;
   line-height: 1.5;

@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import GoogleMapConfig from '../config/googlemap';
+
+// import GoogleMapConfig from '../config/googlemap'; // UNCOMMENT THIS LINE and LINE 90 below when you have a google API Key mounted in ./config/googlemap.js file.
 import $ from 'jquery';
 
 const DescriptionWrapper = styled.div`
@@ -86,7 +87,7 @@ export default class Description extends React.Component {
         addl_info:
           'Subject to favorable weather conditions. If canceled due to poor weather, you will be given the option of an alternative date or full refund',
       },
-      apiKey: GoogleMapConfig.apiKey,
+      // apiKey: GoogleMapConfig.apiKey, // UNCOMMENT ME and LINE 5 when you have a google API Key mounted in ./config/googlemap.js file.
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -262,7 +263,7 @@ export default class Description extends React.Component {
 
         <MerchantInformation>
           <Pin>
-            <img src="./images/pinGreen.png" alt="Map Pin" />
+            <img src={(this.state.apiKey) ? "./images/pinGreen.png" : "./images/pin1.png"} alt="Map Pin" />
           </Pin>
           <MerchantLocationHeader>{this.state.deal.merch_name}
             <br />

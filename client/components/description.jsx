@@ -32,7 +32,7 @@ const Icon = styled.img`
 `;
 
 const Map = styled.div`
-  float: left;
+  float: center;
   padding-top: 60px;
 `;
 
@@ -149,7 +149,6 @@ export default class Description extends React.Component {
     console.log('id', deal_id);
     this.getDescripInfo(deal_id);
   }
-
 
   render() {
     let ExclusionsComponent;

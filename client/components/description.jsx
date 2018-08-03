@@ -31,6 +31,11 @@ const Icon = styled.img`
   padding: 7px;
 `;
 
+const Map = styled.div`
+  float: left;
+  padding-top: 60px;
+`;
+
 const Pin = styled.img`
   float: left;
   padding-top: 10px;
@@ -248,8 +253,9 @@ export default class Description extends React.Component {
           {this.state.deal.ttd}
         </MerchantInformation>
         <br />
-
-        <Pin src={(this.state.apiKey) ? `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.deal.city},${this.state.deal.state_abbr}&visible=${this.state.deal.addr_ln1},${this.state.deal.city},${this.state.deal.state_abbr}&size=620x320&maptype=roadmap&markers=color:green%7Clabel:1%7C${this.state.deal.addr_ln1},${this.state.deal.city},${this.state.deal.state_abbr}&key=${this.state.apiKey}` : `./images/mapPlaceholder.PNG`} alt="Map Image" />
+        <Map>
+          <img src={(this.state.apiKey) ? `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.deal.city},${this.state.deal.state_abbr}&visible=${this.state.deal.addr_ln1},${this.state.deal.city},${this.state.deal.state_abbr}&size=620x320&maptype=roadmap&markers=color:green%7Clabel:1%7C${this.state.deal.addr_ln1},${this.state.deal.city},${this.state.deal.state_abbr}&key=${this.state.apiKey}` : `./images/mapPlaceholder.PNG`} alt="Map Image" />
+        </Map>
         <br />
 
         <MerchantInformation>

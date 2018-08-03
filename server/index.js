@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
 const db = require(path.join(__dirname, '../db/deal_descriptions'));
+const descripFilepath = path.join(__dirname, '../public');
 
 const PORT = 3002;
 
@@ -18,12 +20,27 @@ app.use('/deal/:deal_id/description', (req, res, next) => {
   next();
 });
 
-// serve static page
-app.use(express.static(path.join(__dirname, '../public')));
+// // // serve static page (originally)
+// app.use(express.static(path.join(__dirname, '../public')));
 
-// respond to global endpoint hits
-app.get('/', (req, res) => {
-  res.send('Hello World');
+// from Christian's
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static(descripFilepath));
+app.use('/:id', express.static(descripFilepath));
+
+/* added the GET/app.js API call in below as found similarly in Alec's server API library.
+My bundle.js file doesn't get expressed properly this way unfortunately, and also I am serving the logos and images on the page from an associate public/image file.
+Find above, the static serving API call that was working before if this is helpful.
+*/
+// respond to global endpoint app.js request
+app.get('/app.js', (req, res) => {
+  res.sendFile(descripFilepath);
 });
 
 // entire table response to description endpoint hits

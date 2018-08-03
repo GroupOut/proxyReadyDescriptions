@@ -21,6 +21,8 @@ coverage
 .grunt
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
+build/
+dist/
 public/bundle.js
 
 # Sample Directories

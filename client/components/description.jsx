@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import GoogleMapConfig from '../config/googlemap';
+import $ from 'jquery';
 
 const DescriptionWrapper = styled.div`
   float: left;
@@ -105,9 +106,44 @@ export default class Description extends React.Component {
       });
   }
 
-  componentDidMount() {
-    this.getDescripInfo(9);
+  // Alec version
+  // getReviewsForDeal(dealId) {
+  //   let that = this;
+  //   $.ajax({
+  //     url: `http://localhost:3002/deal/${dealId}/description`,
+  //     type: 'GET',
+  //     success: (data) => {
+  //       if (data.length !== 0) {
+  //         that.setState({ deal: response.data[0] });
+  //       }
+  //     }
+  //   });
+  // }
+
+  // Nolsky version
+  // componentWillMount() {
+  //   let context = this;
+  //   let locSplit = window.location.pathname.split('/');
+  //   let idParam;
+  //   for (let i = 0; i < locSplit.length; i++) {
+  //     if (locSplit[i] === 'deals') {
+  //       idParam = parseInt(locSplit[i + 1])
+  //     }
+  //   }
+
+  //   if (typeof idParam === 'number') {
+  //     if (idParam > 0 && idParam < 101) {
+  //       this.getDescripInfo(idArr);
+  //     }
+  //   }
+  // }
+
+  componentWillMount() {
+    let deal_id = location.pathname.split('/')[2];
+    console.log('id', deal_id);
+    this.getDescripInfo(deal_id);
   }
+
 
   render() {
     let ExclusionsComponent;
@@ -212,11 +248,11 @@ export default class Description extends React.Component {
         </MerchantInformation>
         <br />
 
-        <Pin src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.deal.city},${this.state.deal.state_abbr}&visible=${this.state.deal.addr_ln1},${this.state.deal.city},${this.state.deal.state_abbr}&size=620x320&maptype=roadmap&markers=color:green%7Clabel:1%7C${this.state.deal.addr_ln1},${this.state.deal.city},${this.state.deal.state_abbr}&key=${this.state.apiKey}`} alt="Map Image" />
+        <Pin src={(this.state.apiKey) ? `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.deal.city},${this.state.deal.state_abbr}&visible=${this.state.deal.addr_ln1},${this.state.deal.city},${this.state.deal.state_abbr}&size=620x320&maptype=roadmap&markers=color:green%7Clabel:1%7C${this.state.deal.addr_ln1},${this.state.deal.city},${this.state.deal.state_abbr}&key=${this.state.apiKey}` : `./images/mapPlaceholder.PNG`} alt="Map Image" />
         <br />
 
         <MerchantInformation>
-          <Pin src="/images/pin1.png" alt="Map Pin" />
+          <Pin src="./images/pinGreen.png" alt="Map Pin" />
           <MerchantLocationHeader>{this.state.deal.merch_name}
             <br />
             <MerchantLocationInformation>

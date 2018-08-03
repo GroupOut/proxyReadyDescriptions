@@ -13,6 +13,7 @@ const DescriptionWrapper = styled.div`
 /*   border-style: solid;
   border-width: 2px; */  
   text-align: left;
+  padding-top: 50px;
   color: #75787b;
   font-family: OpenSans, "Helvetica Neue" , Helvetica, Tahoma, Arial, FreeSans, sans-serif;
   font-size: 14px;
@@ -168,14 +169,14 @@ export default class Description extends React.Component {
 
     return (
       <DescriptionWrapper>
-        <form onSubmit={this.handleSubmit}>
+        {/* <form onSubmit={this.handleSubmit}>
           <label>
             Choose a deal:
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
           <input className='submitButton' type="submit" value="Submit" />
 
-        </form>
+        </form> */}
 
         <div className="descrip">
           <DescriptionSubcomponentHeader>What You'll Get</DescriptionSubcomponentHeader>

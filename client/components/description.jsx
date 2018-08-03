@@ -22,7 +22,12 @@ const DescriptionWrapper = styled.div`
 `;
 
 const DescriptionSubcomponentHeader = styled.h3`
+  border-bottom: 0.5px solid #75787b;
   color: #333;
+  font-size:1.4rem;
+  font-weight:700;
+  line-height:1.2;
+  padding-bottom: 20px;
 `;
 
 const Icon = styled.img`
@@ -180,7 +185,6 @@ export default class Description extends React.Component {
 
         <div className="descrip">
           <DescriptionSubcomponentHeader>What You'll Get</DescriptionSubcomponentHeader>
-          <hr></hr>
           <div>
             <p>
               {this.state.deal.descrip_p1}
@@ -222,7 +226,6 @@ export default class Description extends React.Component {
 
         <div className="fine_print">
           <DescriptionSubcomponentHeader>The Fine Print</DescriptionSubcomponentHeader>
-          <hr></hr>
           <div>
             {this.state.deal.fine_print}
           </div>
@@ -231,7 +234,6 @@ export default class Description extends React.Component {
 
         <div className="about">
           <DescriptionSubcomponentHeader>About {this.state.deal.merch_name}</DescriptionSubcomponentHeader>
-          <hr></hr>
           <h5>
             <p>
               {this.state.deal.about_p1}

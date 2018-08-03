@@ -36,7 +36,7 @@ const Map = styled.div`
   padding-top: 60px;
 `;
 
-const Pin = styled.img`
+const Pin = styled.div`
   float: left;
   padding-top: 10px;
 `;
@@ -259,7 +259,9 @@ export default class Description extends React.Component {
         <br />
 
         <MerchantInformation>
-          <Pin src="./images/pinGreen.png" alt="Map Pin" />
+          <Pin>
+            <img src="./images/pinGreen.png" alt="Map Pin" />
+          </Pin>
           <MerchantLocationHeader>{this.state.deal.merch_name}
             <br />
             <MerchantLocationInformation>

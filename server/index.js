@@ -4,9 +4,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const db = require(path.join(__dirname, '../db/deal_descriptions'));
-const descripFilepath = path.join(__dirname, '../public');
+const descripFilepath = path.join(__dirname, '../public/bundle.js');
 
-const PORT = 3002;
+const port = process.env.PORT || 3002;
 
 // logger
 // all get requests
@@ -58,4 +58,4 @@ app.get('/deal/:deal_id/description', (req, res, next) => {
 // deal_id MUST be number
 
 // set server to listen
-app.listen(PORT, () => console.log(`Listening on port ${PORT} to descriptions_server.`));
+app.listen(port, () => console.log(`Listening on port ${port} to descriptions_server.`));
